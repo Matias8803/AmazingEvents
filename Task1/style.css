@@ -39,3 +39,8 @@ h1{
 	position:relative;
 	top:1px;
 }
+
+#tarjeta{
+    background-color: #d90368;
+	border-radius:6px;
+}
