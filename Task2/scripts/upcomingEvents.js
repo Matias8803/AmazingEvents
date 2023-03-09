@@ -1,3 +1,4 @@
+console.log([document])
 const contenedorTarjetas = document.querySelector('#contenedor-cards')
 
 let tarjetas = ''
@@ -9,7 +10,7 @@ for (const evento of data.events) {
       <div class="card-body">
         <h5 class="card-title">${evento.name}</h5>
         <p class="card-text p-3">${evento.description}</p>
-        <a href="./details.html" class="btn btn-primary position-absolute bottom-0 end-0 ms-auto m-2">Details</a>
+        <a href="./details.html?id=${evento._id}" class="btn btn-primary position-absolute bottom-0 end-0 ms-auto m-2">Details</a>
       </div>
     </div>`
 
