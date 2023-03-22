@@ -19,11 +19,9 @@ async function getEvents() {
     events = dataEvents.events;
     currentDate = dataEvents.currentDate;
 
-    if (events.find(event => event._id == eventId) ===  undefined) {
-      loadNoResults();
-    }else {
-      cargarTarjetaDetalle(events, Number(eventId));
-    }
+
+      cargarTarjetaDetalle(events, Number(id));
+   
 
 };
 
@@ -32,46 +30,49 @@ let currentDate = "";
 getEvents();
 
 function cargarTarjetaDetalle(events, id){
-let tarjeta= ``;
-if (events.find(event => event._id == eventId)
-  contenedorTarjetas.innerHTML = `<div id="tarjeta" class="row g-0 position-relative">
+let tarjeta = ``;
+const tarjetaDetalle = events.find(event => event._id === id);
+ if (tarjetaDetalle.date >= currentDate){
+  tarjeta  += `<div id="tarjeta" class="card border-dark row flex-row p-4 pb-lg-5 pe-lg-0 pt-lg-5 rounded-3 border shadow-lg">
   <div class="col-md-6 mb-md-0 p-md-4">
-   <img src="${tarjetaDetalle.image}" class="card-img-top" alt="evento" height="180">
+   <img src="${tarjetaDetalle.image}" class="card-img-top" alt="evento">
    </div>
    <div class="col-md-6 p-4 ps-md-0">
-     <h5 class="card-title">${tarjetaDetalle.name}</h5>
-     <p class="card-text p-1">${tarjetaDetalle.description}</p>
-     <div class="d-flex justify-content-between mt-2">
-     <p class="card-text">Date: ${tarjetaDetalle.date}</p>
-     <p class="card-text">Price: $${tarjetaDetalle.price}</p>
-     </div>
-     <div class="d-flex justify-content-between mt-2">
-     <p class="card-text">Category: ${tarjetaDetalle.category}</p>
-     <p class="card-text">Capacity: ${tarjetaDetalle.capacity}</p>
-     <p class="card-text">Estimate: ${tarjetaDetalle.estimate}</p>
+     <h5 class="card-title display-7 fw-bold lh-1 mb-2">${tarjetaDetalle.name}</h5>
+     <p class="card-text lead">${tarjetaDetalle.description}</p>
+     <p class="card-text lead">Date: ${tarjetaDetalle.date}</p>
+     <p class="card-text lead">Price: $${tarjetaDetalle.price}</p>
+     
+     <div class="d-flex justify-content-between mt-4">
+     <p class="card-text p-1 fw-bold">Category: ${tarjetaDetalle.category}</p>
+     <p class="card-text p-1 fw-bold">Capacity: ${tarjetaDetalle.capacity}</p>
+     <p class="card-text p-1 fw-bold">Estimate: ${tarjetaDetalle.estimate}</p>
      </div>
      
    </div>
- </div>`
+ </div>`;
 
-else if (tarjetaDetalle.date < "2022-01-01")
-contenedorTarjetas.innerHTML = `<div id="tarjeta" class="row g-0 position-relative">
+}else if (tarjetaDetalle.date < currentDate){
+  tarjeta += `<div id="tarjeta" class="card border-dark row flex-row p-4 pb-lg-5 pe-lg-0 pt-lg-5 rounded-3 border shadow-lg">
   <div class="col-md-6 mb-md-0 p-md-4">
    <img src="${tarjetaDetalle.image}" class="card-img-top" alt="evento" height="180">
    </div>
    <div class="col-md-6 p-4 ps-md-0">
-     <h5 class="card-title">${tarjetaDetalle.name}</h5>
-     <p class="card-text p-1">${tarjetaDetalle.description}</p>
-     <p class="card-text p-1">Date: ${tarjetaDetalle.date}</p>
-     <p class="card-text p-1">Price: $${tarjetaDetalle.price}</p>
-     <p class="card-text p-1">Category: ${tarjetaDetalle.category}</p>
-     <p class="card-text p-1">Capacity: ${tarjetaDetalle.capacity}</p>
-     <p class="card-text p-1">Assistance: ${tarjetaDetalle.assistance}</p>
-     
+     <h5 class="card-title display-7 fw-bold lh-1 mb-2">${tarjetaDetalle.name}</h5>
+     <p class="card-text lead">${tarjetaDetalle.description}</p>
+     <p class="card-text lead">Date: ${tarjetaDetalle.date}</p>
+     <p class="card-text lead">Price: $${tarjetaDetalle.price}</p>
+
+     <div class="d-flex justify-content-between mt-4">
+     <p class="card-text p-1 fw-bold">Category: ${tarjetaDetalle.category}</p>
+     <p class="card-text p-1 fw-bold">Capacity: ${tarjetaDetalle.capacity}</p>
+     <p class="card-text p-1 fw-bold">Assistance: ${tarjetaDetalle.assistance}</p>
+     </div>
    </div>
  </div>`
 
 }
-
+ contenedorTarjetas.innerHTML = tarjeta
+}
 
 

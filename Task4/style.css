@@ -3,11 +3,12 @@ h1{
     justify-content: space-around;
     text-align: center;
     margin-top: 20PX;
-    text-shadow: -2px -2px 2px #d90368;
+    text-shadow: 1px 1px 2px lightblue;
+	text-decoration: solid;
 }
 
 .card{
-    background-color: #d90368;
+    background-color:lightblue;
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
@@ -32,7 +33,7 @@ h1{
 }
 
 .btn:hover{
-    background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background:linear-gradient(to bottom, #807bc9 5%, #f9f9f9 100%);
 	background-color:#e9e9e9;
 }
 
@@ -42,6 +43,6 @@ h1{
 }
 
 #tarjeta{
-    background-color: #d90368;
+    background-color: lightblue;
 	border-radius:9px;
 }
